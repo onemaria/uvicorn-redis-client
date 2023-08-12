@@ -19,10 +19,7 @@ def get_mrna_from_rna(rna_sequence: str):
 
 def translate_mrna_to_amino_acids(mrna_sequence: str):
     nucleotides = ['A', 'C', 'G', 'U']
-    # reverse_transcription_dict = {"U": "A", "A": "U", "C": "G", "G": "C"}
     mrna_sequence = mrna_sequence.upper()
-
-    # mrna_sequence = "".join(reverse_transcription_dict[base] for base in rna_sequence)
 
     codons = {
         "UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
@@ -59,12 +56,5 @@ def translate_mrna_to_amino_acids(mrna_sequence: str):
             amino_acids.append(amino_acid)
 
     return "".join(amino_acids)
-
-    # mrna_sequence = mrna_sequence[:len(mrna_sequence) - len(mrna_sequence) % 3]
-    #
-    # codon_triplets = [mrna_sequence[i:i+3] for i in range(0, len(mrna_sequence), 3)]
-    # amino_acids = [codons[codon] for codon in codon_triplets]
-    #
-    # return "".join(amino_acids)
 
 
