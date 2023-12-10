@@ -2,9 +2,8 @@
 
 This project uses [Uvicorn](https://www.uvicorn.org/) and [FasAPI](https://fastapi.tiangolo.com/).
 
-The application takes the name of a gene and its DNA sequence. The DNA sequence is translated into RNA
-and protein product. This output is saved in the local running instance of Redis as a Key-Value pair. 
-The key is the name of the gene and the value is the mRNA and predicted protein sequence.
+The application is a simple Redis Microservice running using Uvicorn as a web server and FastAPI web framework.
+The microservice connects to a locally runing Redis database and supports CRUD operations.
 
 Redis is an open source (BSD licensed), in-memory data structure store, used as a database.
 
@@ -20,7 +19,7 @@ Run the following commands:
 
 `pipenv install`
 
-`pipenv --venv` - to see which environment are you using then select that virtual env (perhaps from IDE interface)
+`pipenv --venv` - to see which environment you are using, then select that virtual env (perhaps from IDE interface)
 
 ### Run the server
 
@@ -31,6 +30,19 @@ The server communicates with a local Redis running in a docker container. To pul
 `docker pull redis`
 
 `docker run -p 6379:6379 -v redis-data:/data redis`
+
+### Generate python client
+
+To generate a client you must generate an openapi schema of the service. Based on this schema
+openapi-generator will generate a python client.
+
+You will need Java (it was tested with Java 11) to run the openapi-generator-cli.jar as well as the _build_ python package.
+```commandline
+sudo apt update
+sudo apt install openjdk-11-jdk
+pip install --upgrade setuptools
+bash scripts/generate-client.sh
+```
 
 ### Access the redis CLI 
 Install redis-cli:
