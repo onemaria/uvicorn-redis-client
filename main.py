@@ -4,7 +4,7 @@ from starlette.responses import RedirectResponse
 import client
 
 app = FastAPI()
-app.title = "Simple tool Redis Microservice"
+app.title = "Simple Redis Microservice"
 
 
 @app.get("/", include_in_schema=False)

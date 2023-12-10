@@ -1,5 +1,7 @@
+import json
 from fastapi import HTTPException
 import redis
+from utils import transcribe_dna_to_rna, translate_mrna_to_amino_acids, get_mrna_from_rna
 
 
 def redis_instance():
@@ -22,6 +24,7 @@ def get_key(key: str):
         return value
     else:
         raise HTTPException(detail=f'Key was not found')
+
 
 
 def delete_key(key: str):
